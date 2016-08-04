@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:showIn="@layout/activity_main"
+    tools:context="com.ya.deliverydemo.MainActivity">
+
+    <android.support.v7.widget.SearchView
+        android:id="@+id/search_express"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"></android.support.v7.widget.SearchView>
+
+    <com.malinskiy.superrecyclerview.SuperRecyclerView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/express_list_logo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/search_express"
+        app:layout_empty="@layout/emptyview"
+        app:layout_moreProgress="@layout/view_more_progress"
+        app:mainLayoutId="@layout/layout_recyclerview_verticalscroll"
+        app:recyclerClipToPadding="false"
+        app:scrollbarStyle="insideInset"></com.malinskiy.superrecyclerview.SuperRecyclerView>
+
+    <com.malinskiy.superrecyclerview.SuperRecyclerView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/express_list_descri"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/search_express"
+        android:visibility="gone"
+        app:layout_moreProgress="@layout/view_more_progress"
+        app:mainLayoutId="@layout/layout_recyclerview_verticalscroll"
+        app:recyclerClipToPadding="false"
+        app:scrollbarStyle="insideInset"></com.malinskiy.superrecyclerview.SuperRecyclerView>
+</RelativeLayout>

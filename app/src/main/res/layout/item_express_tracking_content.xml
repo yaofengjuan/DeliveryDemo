@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingLeft="8dp">
+
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="11:53"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="12sp" />
+
+    <ImageView
+        android:id="@+id/img"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:layout_alignBottom="@id/time"
+        android:layout_alignTop="@id/time"
+        android:layout_marginLeft="4dp"
+        android:layout_toRightOf="@id/time"
+        android:src="@drawable/ic_access_time_grey600_24dp" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/img"
+        android:layout_alignRight="@id/img"
+        android:layout_below="@id/img">
+
+        <View
+            android:layout_width="0.2dp"
+            android:layout_height="18dp"
+            android:layout_centerHorizontal="true"
+            android:background="@android:color/darker_gray" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/express_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        android:layout_toRightOf="@id/img"
+        android:text="快件正转运至【青岛北安服务点】"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="12sp" />
+</RelativeLayout>
