@@ -129,7 +129,7 @@ public class MainActivity extends BaseActivity implements ILoadInfoView<List<Exp
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_my_collection, menu);
+        //getMenuInflater().inflate(R.menu.menu_my_collection, menu);
         return true;
     }
 
