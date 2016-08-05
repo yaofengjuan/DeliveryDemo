@@ -114,9 +114,16 @@
  public void *(...);
 }
 -keep public class android.support.v7.**{*;}
--keep public class *extends android.support.v7.**{*;}
+-keep public class * extends android.support.v7.**{*;}
 
 #####################
+
+##---------------custom------------------
+-keep class com.ya.deliverydemo.adapter.**{*;}
+-keep class com.ya.deliverydemo.entity.**{*;}
+##---------------custom------------------
+
+
 ##---------------Begin: proguard configuration for Gson ----------
 -keep public class com.google.gson.**
 -keep public class com.google.gson.** {public private protected *;}
@@ -128,27 +135,31 @@
 ##---------------End: proguard configuration for Gson ----------
 
 ##--------------start:android-async-http--------------------
--libraryjars libs/android-async-http-1.4.6.jar
+##-libraryjars libs/android-async-http-1.4.6.jar
 -dontwarn com.loopj.android.http.**
 -keep class com.loopj.android.http.**{*;}
 ##--------------end:android-async-http----------------
 
 ##--------------start:showapi_sdk.jar-----------------
--libraryjars libs/showapi_sdk.jar
+##-libraryjars libs/showapi_sdk.jar
 -dontwarn com.show.api.**
 -keep class com.show.api.**{*;}
 ##--------------end:showapi_sdk.jar------------------
 
 ##---------------start:glide------------------------
--keep class com.github.bumptech.glide.**{*;}
+-keep public class com.github.bumptech.glide.**{*;}
 ##---------------end:glide--------------------------
 
 ##---------------start:superrecyclerview------------------------
--keep class com.malinskiy.superrecyclerview.**{*;}
+-keep public class com.malinskiy.superrecyclerview.**{*;}
 ##---------------end:superrecyclerview------------------------
-
+-dontwarn okio.**
+-dontwarn retrofit2.**
+-dontwarn rx.**
 ##---------------start:roundedimageview------------------------
--keep class com.makeramen:roundedimageview.**{*;}
+-dontwarn com.makeramen.roundedimageview.**
+-keep  class com.makeramen.roundedimageview.**{*;}
+-keep class com.squareup.picasso.Transformation.**{*;}
 ##---------------end:roundedimageview------------------------
 
 
@@ -157,10 +168,8 @@
 -keep public class android.support.design.widget.**{*;}
 -keep public class android.support.design.**{*;}
 ##---------------end:design--------------------------
+-keep class rx.internal.util.unsafe.**{*;}
 
-##---------------start:------------------------
-##---------------start:------------------------
-##---------------start:------------------------
 
 
 

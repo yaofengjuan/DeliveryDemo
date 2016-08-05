@@ -13,7 +13,8 @@ import android.view.View;
 
 import com.malinskiy.superrecyclerview.OnMoreListener;
 import com.malinskiy.superrecyclerview.SuperRecyclerView;
-import com.ya.deliverydemo.ExpressList.ShowapiResBodyEntity.ExpressListEntity;
+import com.ya.deliverydemo.adapter.ExpressListAdapter;
+import com.ya.deliverydemo.entity.ExpressList.ShowapiResBodyEntity.ExpressListEntity;
 
 import java.util.ArrayList;
 import java.util.List;

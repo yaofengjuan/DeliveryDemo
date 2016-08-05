@@ -61,12 +61,28 @@ android {
         versionCode getVersionCode()
         versionName getVersionName()
     }
+    signingConfigs {
+        release {
+            keyAlias 'delivery'
+            keyPassword '123456'
+            storeFile file('deliverydemo.jks')
+            storePassword '123456'
+        }
+    }
     buildTypes {
         release {
             minifyEnabled true //开启混淆
+            //Zipalign优化
+            zipAlignEnabled true
+            // 移除无用的resource文件
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            //使用的签名
+            signingConfig signingConfigs.release
         }
     }
+
+
     lintOptions {
         abortOnError false
     }

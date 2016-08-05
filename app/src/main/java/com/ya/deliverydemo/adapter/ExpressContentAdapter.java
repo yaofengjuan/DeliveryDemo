@@ -1,4 +1,4 @@
-package com.ya.deliverydemo;
+package com.ya.deliverydemo.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -10,16 +10,16 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.ya.deliverydemo.ExpressContent.ShowapiResBodyEntity.DataEntity;
-
-import org.w3c.dom.Text;
+import com.ya.deliverydemo.R;
+import com.ya.deliverydemo.Utils;
+import com.ya.deliverydemo.entity.ExpressContent;
+import com.ya.deliverydemo.entity.ExpressContent.ShowapiResBodyEntity.DataEntity;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Map.Entry;
 
 /**

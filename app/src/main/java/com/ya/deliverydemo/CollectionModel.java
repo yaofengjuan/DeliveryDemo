@@ -3,7 +3,9 @@ package com.ya.deliverydemo;
 import android.util.Log;
 
 import com.show.api.ShowApiRequest;
-import com.ya.deliverydemo.ExpressContent.ShowapiResBodyEntity.DataEntity;
+import com.ya.deliverydemo.entity.ExpressContent;
+import com.ya.deliverydemo.entity.ExpressContent.ShowapiResBodyEntity.DataEntity;
+import com.ya.deliverydemo.entity.ExpressInfo;
 
 /**
  * Created by YaoFengjuan on 2016/6/24.

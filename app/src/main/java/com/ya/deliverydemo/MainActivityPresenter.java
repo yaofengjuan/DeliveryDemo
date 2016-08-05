@@ -4,7 +4,8 @@ import android.os.Handler;
 import android.text.TextUtils;
 
 import com.malinskiy.superrecyclerview.SuperRecyclerView;
-import com.ya.deliverydemo.ExpressList.ShowapiResBodyEntity.ExpressListEntity;
+import com.ya.deliverydemo.entity.ExpressList;
+import com.ya.deliverydemo.entity.ExpressList.ShowapiResBodyEntity.ExpressListEntity;
 
 import java.util.List;
 

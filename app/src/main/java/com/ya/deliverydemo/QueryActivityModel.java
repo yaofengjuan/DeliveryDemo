@@ -3,6 +3,7 @@ package com.ya.deliverydemo;
 import android.util.Log;
 
 import com.show.api.ShowApiRequest;
+import com.ya.deliverydemo.entity.ExpressContent;
 
 /**
  * Created by YaoFengjuan on 2016/6/22.

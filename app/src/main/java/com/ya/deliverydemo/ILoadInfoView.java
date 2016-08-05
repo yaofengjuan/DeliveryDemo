@@ -1,9 +1,5 @@
 package com.ya.deliverydemo;
 
-import com.ya.deliverydemo.ExpressList.ShowapiResBodyEntity.ExpressListEntity;
-
-import java.util.List;
-
 /**
  * Created by YaoFengjuan on 2016/6/14.
  */

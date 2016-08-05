@@ -3,6 +3,8 @@ package com.ya.deliverydemo;
 import android.content.Context;
 import android.os.Handler;
 
+import com.ya.deliverydemo.entity.ExpressInfo;
+
 import java.util.List;
 
 /**

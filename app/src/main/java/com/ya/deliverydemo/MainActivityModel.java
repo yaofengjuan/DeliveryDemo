@@ -1,22 +1,19 @@
 package com.ya.deliverydemo;
 
-import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Interpolator;
-import android.widget.ListView;
 
 import com.malinskiy.superrecyclerview.SuperRecyclerView;
 import com.nineoldandroids.animation.Animator;
 import com.nineoldandroids.animation.AnimatorListenerAdapter;
 import com.nineoldandroids.animation.ObjectAnimator;
 import com.show.api.ShowApiRequest;
-import com.ya.deliverydemo.ExpressList.ShowapiResBodyEntity.ExpressListEntity;
+import com.ya.deliverydemo.entity.ExpressList;
+import com.ya.deliverydemo.entity.ExpressList.ShowapiResBodyEntity.ExpressListEntity;
 
 import java.util.ArrayList;
 import java.util.List;

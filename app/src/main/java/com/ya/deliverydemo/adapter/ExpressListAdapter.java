@@ -1,4 +1,4 @@
-package com.ya.deliverydemo;
+package com.ya.deliverydemo.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,11 +11,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.ya.deliverydemo.ExpressList.ShowapiResBodyEntity.ExpressListEntity;
+import com.ya.deliverydemo.QueryActivity;
+import com.ya.deliverydemo.R;
+import com.ya.deliverydemo.entity.ExpressList.ShowapiResBodyEntity.ExpressListEntity;
 
 import java.util.List;
 
-class ExpressListAdapter extends RecyclerView.Adapter<ExpressListAdapter.CustomViewHolder> {
+public class ExpressListAdapter extends RecyclerView.Adapter<ExpressListAdapter.CustomViewHolder> {
 
 
     private Context mContext;

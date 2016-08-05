@@ -1,4 +1,4 @@
-package com.ya.deliverydemo;
+package com.ya.deliverydemo.entity;
 
 import com.google.gson.Gson;
 

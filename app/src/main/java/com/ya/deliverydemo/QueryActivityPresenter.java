@@ -2,6 +2,8 @@ package com.ya.deliverydemo;
 
 import android.os.Handler;
 
+import com.ya.deliverydemo.entity.ExpressContent;
+
 /**
  * Created by YaoFengjuan on 2016/6/22.
  */

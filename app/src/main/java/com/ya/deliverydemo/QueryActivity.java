@@ -13,6 +13,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.ya.deliverydemo.adapter.ExpressContentAdapter;
+import com.ya.deliverydemo.entity.ExpressContent;
+
 public class QueryActivity extends BaseActivity implements ILoadInfoView<ExpressContent> {
 
     private SearchView mSearchExpress;
