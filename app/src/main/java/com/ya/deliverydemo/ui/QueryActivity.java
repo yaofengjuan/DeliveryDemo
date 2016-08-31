@@ -1,4 +1,4 @@
-package com.ya.deliverydemo;
+package com.ya.deliverydemo.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,8 +13,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.ya.deliverydemo.Constant;
+import com.ya.deliverydemo.ILoadInfoView;
+import com.ya.deliverydemo.QueryActivityPresenter;
+import com.ya.deliverydemo.R;
 import com.ya.deliverydemo.adapter.ExpressContentAdapter;
 import com.ya.deliverydemo.entity.ExpressContent;
+import com.ya.deliverydemo.ui.BaseActivity;
 
 public class QueryActivity extends BaseActivity implements ILoadInfoView<ExpressContent> {
 

@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.makeramen.roundedimageview.RoundedImageView;
-import com.ya.deliverydemo.QueryActivity;
+import com.ya.deliverydemo.ui.QueryActivity;
 import com.ya.deliverydemo.R;
 import com.ya.deliverydemo.entity.ExpressInfo;
 

@@ -14,7 +14,7 @@
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:label="快递列表"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -23,13 +23,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".BaseActivity" />
+        <activity android:name=".ui.BaseActivity" />
         <activity
-            android:name=".QueryActivity"
+            android:name=".ui.QueryActivity"
             android:label="@string/title_activity_query"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".CollectionActivity"
+            android:name=".ui.CollectionActivity"
             android:label="@string/title_activity_collection"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>

@@ -34,6 +34,15 @@
 -keep public class com.google.vending.licensing.ILicensingService
 -keep public class com.android.vending.licensing.ILicensingService
 
+
+# We want to keep methods in Activity that could be used in the XML attribute onClick
+-keep public class * extends android.app.Activity {##不管用
+   public void *(...);
+}
+-keep public class * extends android.support.v7.app.AppCompatActivity{##不管用
+   public void *(...);
+}
+
 # For native methods, see http://proguard.sourceforge.net/manual/examples.html#native
 -keepclasseswithmembernames class * {  # 保持 native 方法不被混淆
     native <methods>;
@@ -59,10 +68,6 @@
     public void set*(...);
 }
 
-# We want to keep methods in Activity that could be used in the XML attribute onClick
--keepclassmembers class * extends android.app.Activity {
-   public void *(android.view.View);
-}
 
 # For enumeration classes, see http://proguard.sourceforge.net/manual/examples.html#enumerations
 -keepclassmembers enum * {
@@ -100,6 +105,7 @@
     @android.support.annotation.Keep <init>(...);
 }
 #####避免混淆的基本####
+-keep public class * extends android.app.Activity
 -keep public class * extends android.app.Application
 -keep public class * extends android.app.Service
 -keep public class * extends android.content.BroadcastReceiver
@@ -169,6 +175,7 @@
 -keep public class android.support.design.**{*;}
 ##---------------end:design--------------------------
 -keep class rx.internal.util.unsafe.**{*;}
+
 
 
 

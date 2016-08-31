@@ -1,4 +1,4 @@
-package com.ya.deliverydemo;
+package com.ya.deliverydemo.ui;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -9,8 +9,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.ya.deliverydemo.CollectionPresenter;
+import com.ya.deliverydemo.ILoadInfoView;
+import com.ya.deliverydemo.R;
 import com.ya.deliverydemo.adapter.ExpressInfoAdapter;
 import com.ya.deliverydemo.entity.ExpressInfo;
+import com.ya.deliverydemo.ui.BaseActivity;
 
 import java.util.ArrayList;
 import java.util.List;

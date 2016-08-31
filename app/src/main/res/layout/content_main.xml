@@ -7,7 +7,7 @@
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_main"
-    tools:context="com.ya.deliverydemo.MainActivity">
+    tools:context=".ui.MainActivity">
 
     <android.support.v7.widget.SearchView
         android:id="@+id/search_express"

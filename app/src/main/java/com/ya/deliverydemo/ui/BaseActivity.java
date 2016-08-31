@@ -1,4 +1,4 @@
-package com.ya.deliverydemo;
+package com.ya.deliverydemo.ui;
 
 import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
