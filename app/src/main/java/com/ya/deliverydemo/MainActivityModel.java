@@ -7,6 +7,8 @@ import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Interpolator;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.malinskiy.superrecyclerview.SuperRecyclerView;
 import com.nineoldandroids.animation.Animator;
 import com.nineoldandroids.animation.AnimatorListenerAdapter;
@@ -25,13 +27,19 @@ public class MainActivityModel implements ILoadPageModel<ExpressList> {
 
     @Override
     public ExpressList loadInfo(int page) {
-        String result = new ShowApiRequest(Constant.BASE_URL + "20", Constant.appid, Constant.secret).addTextPara("expName", "")
-                .addTextPara("maxSize", "250")
-                .addTextPara("page", String.valueOf(page)).post();
-        Log.d(this.getClass().getName(), "page==" + page);
-        Log.d(this.getClass().getName(), "result:->->->->->" + result);
-        ExpressList list = ExpressList.objectFromData(result);
-        return list;
+        try {
+            String result = new ShowApiRequest(Constant.BASE_URL + "20", Constant.appid, Constant.secret).addTextPara("expName", "")
+                    .addTextPara("maxSize", "250")
+                    .addTextPara("page", String.valueOf(page)).post();
+            Log.d(this.getClass().getName(), "page==" + page);
+            Log.d(this.getClass().getName(), "result:->->->->->" + result);
+            ExpressList list = ExpressList.objectFromData(result);
+            return list;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+
     }
 
     public void doSearch(List<ExpressListEntity> listEntities, String str) {

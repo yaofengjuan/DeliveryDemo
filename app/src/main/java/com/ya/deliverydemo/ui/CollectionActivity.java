@@ -66,6 +66,16 @@ public class CollectionActivity extends BaseActivity implements ILoadInfoView<Li
     }
 
     @Override
+    public void showBlueProgress() {
+
+    }
+
+    @Override
+    public void dismissBlueProgress() {
+
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:

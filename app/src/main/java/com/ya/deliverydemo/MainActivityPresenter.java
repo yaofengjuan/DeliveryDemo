@@ -24,27 +24,36 @@ public class MainActivityPresenter {
     }
 
     public void loadIndo(final int page) {
+        if (page == 1) {
+            view.showBlueProgress();
+        }
         if (isLoadingMore) {
             new Thread() {
                 //在新线程中发送网络请求
                 public void run() {
                     final ExpressList list = model.loadInfo(page);
-                    //把返回内容通过handler对象更新到界面
-                    mHandler.post(new Thread() {
-                        public void run() {
-                            if (list.showapi_res_code == 0) {
-                                if (list.showapi_res_body.ret_code == 0) {
-                                    isLoadingMore = true;
-                                    view.setData(list.showapi_res_body.expressList);
+                    if (list != null) {
+                        //把返回内容通过handler对象更新到界面
+                        mHandler.post(new Thread() {
+                            public void run() {
+                                if (list.showapi_res_code == 0) {
+                                    if (list.showapi_res_body.ret_code == 0) {
+                                        isLoadingMore = true;
+                                        view.setData(list.showapi_res_body.expressList);
+                                    } else {
+                                        isLoadingMore = false;
+                                        view.showError(list.showapi_res_body.ret_code, list.showapi_res_body.msg);
+                                    }
                                 } else {
-                                    isLoadingMore = false;
-                                    view.showError(list.showapi_res_body.ret_code, list.showapi_res_body.msg);
+                                    view.showError(Constant.bodyError, list.showapi_res_error);
                                 }
-                            } else {
-                                view.showError(Constant.bodyError, list.showapi_res_error);
+
+                                if (page == 1) {
+                                    view.dismissBlueProgress();
+                                }
                             }
-                        }
-                    });
+                        });
+                    }
                 }
             }.start();
         }

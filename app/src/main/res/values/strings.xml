@@ -2,7 +2,8 @@
     <string name="app_name">快递查询</string>
     <string name="title_activity_main3">Main3Activity</string>
     <string name="title_activity_query">查询</string>
-    <string name="title_activity_collection">CollectionActivity</string>
+    <string name="title_activity_collection">收藏</string>
+    <string name="adver_key">ca-app-pub-2486315058472188/1748518951</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
 

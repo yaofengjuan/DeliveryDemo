@@ -137,6 +137,16 @@ public class QueryActivity extends BaseActivity implements ILoadInfoView<Express
     }
 
     @Override
+    public void showBlueProgress() {
+
+    }
+
+    @Override
+    public void dismissBlueProgress() {
+
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:

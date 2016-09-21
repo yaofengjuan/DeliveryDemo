@@ -11,8 +11,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.malinskiy.superrecyclerview.OnMoreListener;
 import com.malinskiy.superrecyclerview.SuperRecyclerView;
+import com.pnikosis.materialishprogress.ProgressWheel;
 import com.ya.deliverydemo.ILoadInfoView;
 import com.ya.deliverydemo.MainActivityPresenter;
 import com.ya.deliverydemo.R;
@@ -34,6 +37,7 @@ public class MainActivity extends BaseActivity implements ILoadInfoView<List<Exp
     private boolean isLoadingMore = true;
     private SuperRecyclerView mExpressDescriList;
     private ExpressListAdapter descriAdapter;
+    private ProgressWheel mProgress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,12 +53,21 @@ public class MainActivity extends BaseActivity implements ILoadInfoView<List<Exp
             public void onClick(View view) {
 //                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
 //                        .setAction("Action", null).show();
-                presenter.flipit(mExpressLogoList, mExpressDescriList);
+                if (listEntities.size() != 0)
+                    presenter.flipit(mExpressLogoList, mExpressDescriList);
             }
         });
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        //测试
+        AdRequest adRequest = new AdRequest.Builder().addTestDevice("E140160995A5DC6C3FD145CAE844F794").build();
+        //加入你的設備代碼
+//        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
         mSearch = (SearchView) findViewById(R.id.search_express);
         mExpressLogoList = (SuperRecyclerView) findViewById(R.id.express_list_logo);
         mExpressDescriList = (SuperRecyclerView) findViewById(R.id.express_list_descri);
+        mProgress = (ProgressWheel) findViewById(R.id.progress_wheel);
 
         //logo列表
         mExpressLogoList.setLayoutManager(new LinearLayoutManager(this));
@@ -119,6 +132,16 @@ public class MainActivity extends BaseActivity implements ILoadInfoView<List<Exp
     @Override
     public void showError(int erroCode, String error) {
         showToastMsg(error);
+    }
+
+    @Override
+    public void showBlueProgress() {
+        mProgress.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void dismissBlueProgress() {
+        mProgress.setVisibility(View.GONE);
     }
 
     @Override

@@ -8,4 +8,8 @@ public interface ILoadInfoView<T> {
     void setData(T data);
 
     void showError(int erroCode,String error);
+
+    void showBlueProgress();
+
+    void dismissBlueProgress();
 }

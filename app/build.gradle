@@ -110,8 +110,12 @@ dependencies {
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'com.malinskiy:superrecyclerview:1.1.4'
     compile 'com.makeramen:roundedimageview:2.2.1'
+
+    compile 'com.pnikosis:materialish-progress:1.7'
     //    compile('com.daimajia.slider:library:1.0.2@aar') {
     //        exclude group: 'com.nineoldandroids'
     //    }
+    //广告
+    compile 'com.google.android.gms:play-services:6.+'
 
 }
