@@ -118,4 +118,6 @@ dependencies {
     //广告
     compile 'com.google.android.gms:play-services:6.+'
 
+    compile 'com.facebook.stetho:stetho:1.0.1'//chrome 调试
+
 }

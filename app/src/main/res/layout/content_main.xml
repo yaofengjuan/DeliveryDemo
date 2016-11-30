@@ -15,20 +15,11 @@
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"></android.support.v7.widget.SearchView>
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        app:queryHint="快递名称"></android.support.v7.widget.SearchView>
 
     <com.malinskiy.superrecyclerview.SuperRecyclerView xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/express_list_logo"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/search_express"
-        app:layout_moreProgress="@layout/view_more_progress"
-        app:mainLayoutId="@layout/layout_recyclerview_verticalscroll"
-        app:recyclerClipToPadding="false"
-        app:scrollbarStyle="insideInset"></com.malinskiy.superrecyclerview.SuperRecyclerView>
-
-    <com.malinskiy.superrecyclerview.SuperRecyclerView xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/express_list_descri"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/search_express"
@@ -37,6 +28,17 @@
         app:mainLayoutId="@layout/layout_recyclerview_verticalscroll"
         app:recyclerClipToPadding="false"
         app:scrollbarStyle="insideInset"></com.malinskiy.superrecyclerview.SuperRecyclerView>
+
+    <com.ya.deliverydemo.SuperRecyclerNew xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/express_list_descri"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/search_express"
+        android:visibility="visible"
+        app:layout_moreProgress="@layout/view_more_progress"
+        app:mainLayoutId="@layout/layout_recyclerview_verticalscroll"
+        app:recyclerClipToPadding="false"
+        app:scrollbarStyle="insideInset"></com.ya.deliverydemo.SuperRecyclerNew>
 
     <com.google.android.gms.ads.AdView
         android:id="@+id/adView"

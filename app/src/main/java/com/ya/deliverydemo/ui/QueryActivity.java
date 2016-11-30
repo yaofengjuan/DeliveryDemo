@@ -1,9 +1,11 @@
 package com.ya.deliverydemo.ui;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
@@ -21,7 +23,7 @@ import com.ya.deliverydemo.adapter.ExpressContentAdapter;
 import com.ya.deliverydemo.entity.ExpressContent;
 import com.ya.deliverydemo.ui.BaseActivity;
 
-public class QueryActivity extends BaseActivity implements ILoadInfoView<ExpressContent> {
+public class QueryActivity extends BaseActionBarActivity implements ILoadInfoView<ExpressContent> {
 
     private SearchView mSearchExpress;
     private RecyclerView mExpressContent;
@@ -37,9 +39,9 @@ public class QueryActivity extends BaseActivity implements ILoadInfoView<Express
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_query);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        mSearchExpress = (SearchView) findViewById(R.id.search_express);
+        mExpressContent = (RecyclerView) findViewById(R.id.express_content);
+        errorView = (TextView) findViewById(R.id.erro_msg);
 
         presenter = new QueryActivityPresenter(this);
         initIntent();
@@ -47,16 +49,29 @@ public class QueryActivity extends BaseActivity implements ILoadInfoView<Express
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+                if (!TextUtils.isEmpty(mailNo)) {
+                    new AlertDialog.Builder(mContext).setTitle("您是否要将当前快递单号为" + mailNo + "加入收藏？").setPositiveButton("是", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            presenter.saveExpressInfo(logoUrl, expName, simpleName, mailNo);
+                            dialog.cancel();
+                            showToastMsg("收藏成功");
+                        }
+                    }).setNegativeButton("否", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    }).show();
+
+                }
 
             }
         });
 
 
-        mSearchExpress = (SearchView) findViewById(R.id.search_express);
-        mExpressContent = (RecyclerView) findViewById(R.id.express_content);
-        errorView = (TextView) findViewById(R.id.erro_msg);
         mExpressContent.setLayoutManager(new LinearLayoutManager(this));
         adapter = new ExpressContentAdapter(mContext);
         mExpressContent.setAdapter(adapter);
@@ -67,9 +82,11 @@ public class QueryActivity extends BaseActivity implements ILoadInfoView<Express
                 String mailNo = query;
                 if (!TextUtils.isEmpty(mailNo)) {
                     presenter.loadInfo(simpleName, mailNo);
+                    QueryActivity.this.mailNo = mailNo;
                 } else {
-                    showToastMsg("请输入订单号");
+                    showToastMsg("请输入快递单号");
                 }
+
                 return true;
             }
 
@@ -104,6 +121,7 @@ public class QueryActivity extends BaseActivity implements ILoadInfoView<Express
 
         if (intent.hasExtra("mailNo")) {
             mailNo = intent.getStringExtra("mailNo");
+            mSearchExpress.setQueryHint(mailNo);
             if (!TextUtils.isEmpty(mailNo)) {
                 presenter.loadInfo(simpleName, mailNo);
             }
@@ -146,13 +164,4 @@ public class QueryActivity extends BaseActivity implements ILoadInfoView<Express
 
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                finish();
-                break;
-        }
-        return true;
-    }
 }

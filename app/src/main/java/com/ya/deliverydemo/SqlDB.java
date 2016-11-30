@@ -36,7 +36,7 @@ public class SqlDB {
         String sql = "select * from myExp where (mailNo=" + myOrder.getMailNo() + ")";
         Cursor c = db.rawQuery(sql, null);
         if (!c.moveToNext()) {
-            db.execSQL("insert into myExp(null,?,?,?,?,?,?)", new Object[]{myOrder.getExpSpellName(), myOrder.getMailNo(), myOrder.getSimpleName(), myOrder.getLogoUrl(), myOrder.getLastMsg(), myOrder.getRemarkName()});
+            db.execSQL("insert into myExp VALUES(null,?,?,?,?,?,?)", new Object[]{myOrder.getExpSpellName(), myOrder.getMailNo(), myOrder.getSimpleName(), myOrder.getLogoUrl(), myOrder.getLastMsg(), myOrder.getRemarkName()});
         }
         c.close();
 
@@ -50,7 +50,7 @@ public class SqlDB {
         List<ExpressInfo> data = new ArrayList<>();
         String sql = "select * from myExp";
         Cursor c = db.rawQuery(sql, null);
-        if (c.moveToNext()) {
+        while (c.moveToNext()) {
             String logoUrl = c.getString(c.getColumnIndex("logoUrl"));
             String lastMsg = c.getString(c.getColumnIndex("lastMsg"));
             String expSpellName = c.getString(c.getColumnIndex("expSpellName"));

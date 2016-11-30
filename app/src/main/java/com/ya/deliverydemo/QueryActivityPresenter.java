@@ -1,13 +1,17 @@
 package com.ya.deliverydemo;
 
 import android.os.Handler;
+import android.util.Log;
 
 import com.ya.deliverydemo.entity.ExpressContent;
+import com.ya.deliverydemo.entity.ExpressInfo;
+import com.ya.deliverydemo.ui.BaseActivity;
 
 /**
  * Created by YaoFengjuan on 2016/6/22.
  */
 public class QueryActivityPresenter {
+    private final SqlDB db;
     private QueryActivityModel model;
     private ILoadInfoView view;
     protected Handler mHandler = new Handler();
@@ -15,6 +19,7 @@ public class QueryActivityPresenter {
     public QueryActivityPresenter(ILoadInfoView view) {
         this.view = view;
         model = new QueryActivityModel();
+        db = SqlDB.getInstant((BaseActivity) view);
     }
 
     public void loadInfo(final String simpleName, final String mailNo) {
@@ -47,4 +52,11 @@ public class QueryActivityPresenter {
             }
         }.start();
     }
+
+    public void saveExpressInfo(String logoUrl, String expName, String simpleName, String mailNo) {
+        ExpressInfo info = new ExpressInfo(expName, mailNo, simpleName, logoUrl, "", "");
+        Log.i(this.getClass().getName(), "收藏快递信息--》" + info.toString());
+        db.saveMyOrder(info);
+    }
+
 }

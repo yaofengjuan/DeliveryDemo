@@ -23,9 +23,9 @@ public class DBUtils extends SQLiteOpenHelper {
                 + "expSpellName text,"
                 + "mailNo text,"
                 + "simpleName text,"
-                + "logoUrl,text"
-                + "lastMsg,text"
-                + "remarkName,text"
+                + "logoUrl text,"
+                + "lastMsg text,"
+                + "remarkName text)"
         );
     }
 

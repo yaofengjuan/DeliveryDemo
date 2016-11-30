@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">快递查询</string>
+    <string name="app_name">查快递</string>
     <string name="title_activity_main3">Main3Activity</string>
     <string name="title_activity_query">查询</string>
     <string name="title_activity_collection">收藏</string>

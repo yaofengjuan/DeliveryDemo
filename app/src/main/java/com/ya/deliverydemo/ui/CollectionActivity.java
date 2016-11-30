@@ -3,6 +3,7 @@ package com.ya.deliverydemo.ui;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -19,32 +20,41 @@ import com.ya.deliverydemo.ui.BaseActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CollectionActivity extends BaseActivity implements ILoadInfoView<List<ExpressInfo>> {
+public class CollectionActivity extends BaseActionBarActivity implements ILoadInfoView<List<ExpressInfo>> {
 
     private RecyclerView myCollection;
     private List<ExpressInfo> list = new ArrayList<>();
     private ExpressInfoAdapter adapter;
     private CollectionPresenter presenter;
+    private FloatingActionButton fab;
+    private boolean isShowDelete = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_collection);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         myCollection = (RecyclerView) findViewById(R.id.my_collection);
         myCollection.setLayoutManager(new LinearLayoutManager(this));
         adapter = new ExpressInfoAdapter(this, list);
         myCollection.setAdapter(adapter);
+        myCollection.setItemAnimator(new DefaultItemAnimator());
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+
+        fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+                isShowDelete = !isShowDelete;
+                if (isShowDelete) {
+                    fab.setImageResource(android.R.drawable.ic_menu_close_clear_cancel);
+                } else {
+                    fab.setImageResource(android.R.drawable.ic_menu_delete);
+                }
+                adapter.setShowDelete(isShowDelete);
+                adapter.notifyDataSetChanged();
             }
         });
 
@@ -55,9 +65,15 @@ public class CollectionActivity extends BaseActivity implements ILoadInfoView<Li
 
     @Override
     public void setData(List<ExpressInfo> data) {
-        list.clear();
-        list.addAll(data);
-        adapter.notifyDataSetChanged();
+        if (data.size() > 0) {
+            list.clear();
+            list.addAll(data);
+            adapter.notifyDataSetChanged();
+        } else {
+            //showToastMsg("您还没有添加收藏");
+            Snackbar.make(fab, "您还没有添加收藏", Snackbar.LENGTH_LONG)
+                    .setAction("Action", null).show();
+        }
     }
 
     @Override
@@ -75,13 +91,5 @@ public class CollectionActivity extends BaseActivity implements ILoadInfoView<Li
 
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                finish();
-                break;
-        }
-        return true;
-    }
+
 }

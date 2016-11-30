@@ -1,5 +1,7 @@
 package com.ya.deliverydemo;
 
+import android.util.Log;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -32,11 +34,13 @@ public class Utils {
      * @return
      */
     public static String getTime(String str) {
+        Log.i("LOG", "str:-->" + str);
         SimpleDateFormat sdr = new SimpleDateFormat("yyyy-mm-dd hh:mm");
         try {
             Date date = sdr.parse(str);
             int hour = date.getHours();
             int minute = date.getMinutes();
+            Log.i("LOG", "hour:-->" + hour + " minute:-->" + minute);
             if (hour < 10) {
                 if (minute < 10) {
                     return "0" + hour + ":" + "0" + minute;
@@ -54,6 +58,23 @@ public class Utils {
 
         } catch (ParseException e) {
             e.printStackTrace();
+            return "";
+        }
+    }
+
+    /**
+     * 获取时间( 23:21:27)
+     *
+     * @param str
+     * @return
+     */
+    public static String getTimeFormat(String str) {
+        Log.i("LOG", "str:-->" + str);
+        String[] times = str.split(" ");
+        if (times.length > 0) {
+            String mi = times[1];
+            return mi.substring(0, mi.length() - 2);
+        } else {
             return "";
         }
     }

@@ -36,10 +36,9 @@ public class ExpressContentAdapter extends RecyclerView.Adapter<ExpressContentAd
 
 
     public void refresh(ExpressContent content) {
+        dataList.clear();
         if (content != null) {
             recombine(content);
-        } else {
-            dataList.clear();
         }
         this.notifyDataSetChanged();
     }
@@ -73,7 +72,7 @@ public class ExpressContentAdapter extends RecyclerView.Adapter<ExpressContentAd
         if (position == 0 && index == 0) {
             expressContent.setTextColor(context.getResources().getColor(R.color.colorAccent));
         }
-        time.setText(Utils.getTime(timeStr));
+        time.setText(Utils.getTimeFormat(timeStr));
         expressContent.setText(Html.fromHtml(content));
         return contentView;
     }

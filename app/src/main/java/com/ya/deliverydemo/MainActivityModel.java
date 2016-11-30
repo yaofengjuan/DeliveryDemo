@@ -42,20 +42,24 @@ public class MainActivityModel implements ILoadPageModel<ExpressList> {
 
     }
 
-    public void doSearch(List<ExpressListEntity> listEntities, String str) {
-        temporaryDataList.clear();
-        temporaryDataList.addAll(listEntities);
 
+    public void setTemporaryDataList(List<ExpressListEntity> temporaryDataList) {
+        this.temporaryDataList.addAll(temporaryDataList);
+    }
+
+    public List<ExpressListEntity> doSearch(String str) {
         List<ExpressListEntity> temporary = new ArrayList<>();//可适配的数据
-        for (ExpressListEntity entity : listEntities) {
+        for (ExpressListEntity entity : temporaryDataList) {
             if (entity.expName.contains(str)) {
                 temporary.add(entity);
             }
         }
         if (temporary.size() > 0) {
-            listEntities.clear();
-            listEntities.addAll(temporary);
+            return temporary;
+        } else {
+            return temporary;
         }
+
     }
 
 

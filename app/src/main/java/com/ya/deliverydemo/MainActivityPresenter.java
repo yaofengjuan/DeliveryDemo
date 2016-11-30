@@ -2,11 +2,13 @@ package com.ya.deliverydemo;
 
 import android.os.Handler;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.malinskiy.superrecyclerview.SuperRecyclerView;
 import com.ya.deliverydemo.entity.ExpressList;
 import com.ya.deliverydemo.entity.ExpressList.ShowapiResBodyEntity.ExpressListEntity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,6 +24,7 @@ public class MainActivityPresenter {
         this.view = view;
         model = new MainActivityModel();
     }
+
 
     public void loadIndo(final int page) {
         if (page == 1) {
@@ -60,14 +63,18 @@ public class MainActivityPresenter {
 
     }
 
-    public void doSearch(List<ExpressListEntity> listEntities, String str) {
+    public void setTemporaryDataList(List<ExpressListEntity> temporaryDataList) {
+        this.model.setTemporaryDataList(temporaryDataList);
+    }
+
+    public List<ExpressListEntity> doSearch( String str) {
         if (!TextUtils.isEmpty(str)) {
             isLoadingMore = false;
-            model.doSearch(listEntities, str);
+            Log.i("LOG", "dosearch");
+            return model.doSearch( str);
         } else {
             isLoadingMore = true;
-            listEntities.clear();
-            listEntities.addAll(getTemporaryDataList());
+            return getTemporaryDataList();
         }
         //model.doSearch(listEntities, str);
     }

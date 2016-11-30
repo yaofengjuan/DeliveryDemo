@@ -1,5 +1,6 @@
 package com.ya.deliverydemo.ui;
 
+import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.os.Bundle;
@@ -7,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -84,7 +86,7 @@ public class MainActivity extends BaseActivity implements ILoadInfoView<List<Exp
         mExpressDescriList.setRefreshingColorResources(android.R.color.holo_orange_light, android.R.color.holo_blue_light, android.R.color.holo_green_light, android.R.color.holo_red_light);
         descriAdapter = new ExpressListAdapter(mContext, true, listEntities);
         mExpressDescriList.setAdapter(descriAdapter);
-        mExpressDescriList.setRotationY(-90f);
+        // mExpressDescriList.setRotationY(-90f);
 
         //修改搜索字体
         SearchView.SearchAutoComplete textView = (SearchView.SearchAutoComplete) mSearch.findViewById(R.id.search_src_text);
@@ -92,16 +94,24 @@ public class MainActivity extends BaseActivity implements ILoadInfoView<List<Exp
         mSearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                return false;
+                Log.d(this.getClass().getName(), "newText:" + query);
+                List<ExpressListEntity> data = presenter.doSearch(query);
+                //logoAdapter.notifyDataSetChanged();
+                Log.i(this.getClass().getName(), "size-->" + data.size());
+                descriAdapter.refresh(data);
+                mExpressDescriList.hideProgress();
+                return true;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
 
                 Log.d(this.getClass().getName(), "newText:" + newText);
-                presenter.doSearch(listEntities, newText);
-                logoAdapter.notifyDataSetChanged();
-                descriAdapter.notifyDataSetChanged();
+                List<ExpressListEntity> data = presenter.doSearch(newText);
+                //logoAdapter.notifyDataSetChanged();
+                Log.i(this.getClass().getName(), "size-->" + data.size());
+                descriAdapter.refresh(data);
+                mExpressDescriList.hideProgress();
                 return true;
             }
         });
@@ -109,6 +119,7 @@ public class MainActivity extends BaseActivity implements ILoadInfoView<List<Exp
 
         presenter = new MainActivityPresenter(this);
         presenter.loadIndo(page);
+
     }
 
 
@@ -120,13 +131,12 @@ public class MainActivity extends BaseActivity implements ILoadInfoView<List<Exp
             }
             if (data != null) {
                 listEntities.addAll(data);
-                logoAdapter.notifyDataSetChanged();
+                descriAdapter.notifyDataSetChanged();
             }
         } else {
             mExpressLogoList.hideMoreProgress();//使用的第三方控件照成的多判断
         }
-
-
+        presenter.setTemporaryDataList(data);
     }
 
     @Override
@@ -157,7 +167,7 @@ public class MainActivity extends BaseActivity implements ILoadInfoView<List<Exp
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        //getMenuInflater().inflate(R.menu.menu_my_collection, menu);
+        getMenuInflater().inflate(R.menu.menu_my_collection, menu);
         return true;
     }
 
@@ -165,7 +175,7 @@ public class MainActivity extends BaseActivity implements ILoadInfoView<List<Exp
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.my_collection:
-
+                startActivity(new Intent(this,CollectionActivity.class));
                 break;
         }
         return super.onOptionsItemSelected(item);

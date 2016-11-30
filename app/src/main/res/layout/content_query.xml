@@ -19,7 +19,8 @@
         android:layout_height="48dp"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
-        app:queryHint="请输入订单号"></android.support.v7.widget.SearchView>
+        android:inputType="number"
+        app:queryHint="请输入快递单号"></android.support.v7.widget.SearchView>
 
 
     <TextView
