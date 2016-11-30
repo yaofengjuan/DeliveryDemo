@@ -21,7 +21,7 @@
 
         <activity
             android:name=".ui.MainActivity"
-            android:label="快递列表"
+            android:label="查快递"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
