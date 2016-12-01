@@ -13,4 +13,9 @@ public class Constant {
 
 
     public static final int bodyError = -999;//申请数据返回的逻辑错误或者网络错误
+    public static final String YoumiAppId = "e17af328bba6857c";//发布ID
+    public static final String YoumiAppSecret = "44e4d19639a1a5f7";//应用密钥
+
+    public static final String AdverSevenDate = "seven_date";
+
 }

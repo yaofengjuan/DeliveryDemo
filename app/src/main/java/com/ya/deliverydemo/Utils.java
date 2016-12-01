@@ -17,7 +17,7 @@ public class Utils {
      * @return
      */
     public static String getDate(String str) {
-        SimpleDateFormat sdr = new SimpleDateFormat("yyyy-mm-dd");
+        SimpleDateFormat sdr = new SimpleDateFormat("yyyy-MM-dd");
         try {
             Date date = sdr.parse(str);
             return sdr.format(date);
@@ -35,7 +35,7 @@ public class Utils {
      */
     public static String getTime(String str) {
         Log.i("LOG", "str:-->" + str);
-        SimpleDateFormat sdr = new SimpleDateFormat("yyyy-mm-dd hh:mm");
+        SimpleDateFormat sdr = new SimpleDateFormat("yyyy-MM-dd hh:mm");
         try {
             Date date = sdr.parse(str);
             int hour = date.getHours();

@@ -3,6 +3,9 @@ package com.ya.deliverydemo.delivery;
 import android.app.Application;
 
 import com.facebook.stetho.Stetho;
+import com.ya.deliverydemo.Constant;
+
+import net.youmi.android.AdManager;
 
 public class MyApplication extends Application {
     public void onCreate() {
@@ -14,5 +17,15 @@ public class MyApplication extends Application {
                         .enableWebKitInspector(
                                 Stetho.defaultInspectorModulesProvider(this))
                         .build());
+        initYoumi();
+    }
+
+    /**
+     * 初始化有米广告条
+     */
+    private void initYoumi() {
+
+        AdManager.getInstance(this).init(Constant.YoumiAppId, Constant.YoumiAppSecret,
+                false, true);
     }
 }

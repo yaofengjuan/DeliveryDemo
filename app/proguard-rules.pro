@@ -175,6 +175,11 @@
 -keep public class android.support.design.**{*;}
 ##---------------end:design--------------------------
 -keep class rx.internal.util.unsafe.**{*;}
+##--------------有米-------------------
+-keep public class android.support.**{
+    *;
+}
+##--------------有米-------------------
 
 
 

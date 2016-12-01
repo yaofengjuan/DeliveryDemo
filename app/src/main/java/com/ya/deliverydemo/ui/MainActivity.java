@@ -12,9 +12,10 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
+
 import com.malinskiy.superrecyclerview.OnMoreListener;
 import com.malinskiy.superrecyclerview.SuperRecyclerView;
 import com.pnikosis.materialishprogress.ProgressWheel;
@@ -25,6 +26,10 @@ import com.ya.deliverydemo.adapter.ExpressListAdapter;
 import com.ya.deliverydemo.entity.ExpressList.ShowapiResBodyEntity.ExpressListEntity;
 import com.ya.deliverydemo.ui.BaseActivity;
 
+import net.youmi.android.normal.banner.BannerManager;
+import net.youmi.android.normal.banner.BannerViewListener;
+
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,12 +64,19 @@ public class MainActivity extends BaseActivity implements ILoadInfoView<List<Exp
                     presenter.flipit(mExpressLogoList, mExpressDescriList);
             }
         });
-        AdView mAdView = (AdView) findViewById(R.id.adView);
-        //测试
-        AdRequest adRequest = new AdRequest.Builder().addTestDevice("E140160995A5DC6C3FD145CAE844F794").build();
-        //加入你的設備代碼
-//        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
+//        AdView mAdView = (AdView) findViewById(R.id.adView);
+//        //测试
+//        AdRequest adRequest = new AdRequest.Builder().addTestDevice("E140160995A5DC6C3FD145CAE844F794").build();
+//        //加入你的設備代碼
+////        AdRequest adRequest = new AdRequest.Builder().build();
+//        mAdView.loadAd(adRequest);
+
+        //---------有米广告条--------
+        // 获取要嵌入广告条的布局
+        final LinearLayout bannerLayout = (LinearLayout) findViewById(R.id.ll_banner);
+        final LinearLayout advertisementLayout = (LinearLayout) findViewById(R.id.advertisement);
+
+
 
         mSearch = (SearchView) findViewById(R.id.search_express);
         mExpressLogoList = (SuperRecyclerView) findViewById(R.id.express_list_logo);
@@ -119,6 +131,11 @@ public class MainActivity extends BaseActivity implements ILoadInfoView<List<Exp
 
         presenter = new MainActivityPresenter(this);
         presenter.loadIndo(page);
+        try {
+            presenter.addAdvertisement(this, bannerLayout,advertisementLayout);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -175,7 +192,7 @@ public class MainActivity extends BaseActivity implements ILoadInfoView<List<Exp
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.my_collection:
-                startActivity(new Intent(this,CollectionActivity.class));
+                startActivity(new Intent(this, CollectionActivity.class));
                 break;
         }
         return super.onOptionsItemSelected(item);

@@ -40,14 +40,41 @@
         app:recyclerClipToPadding="false"
         app:scrollbarStyle="insideInset"></com.ya.deliverydemo.SuperRecyclerNew>
 
-    <com.google.android.gms.ads.AdView
-        android:id="@+id/adView"
-        android:layout_width="wrap_content"
+    <!--<com.google.android.gms.ads.AdView-->
+    <!--android:id="@+id/adView"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_alignParentBottom="true"-->
+    <!--android:layout_centerHorizontal="true"-->
+    <!--ads:adSize="BANNER"-->
+    <!--ads:adUnitId="@string/adver_key"></com.google.android.gms.ads.AdView>-->
+    <LinearLayout
+        android:id="@+id/advertisement"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        ads:adSize="BANNER"
-        ads:adUnitId="@string/adver_key"></com.google.android.gms.ads.AdView>
+        android:orientation="horizontal"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:id="@+id/ll_banner"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="9"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"></LinearLayout>
+
+        <TextView
+            android:id="@+id/delete"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/black"
+            android:text="七天不显示"
+            android:visibility="gone"
+            android:textColor="#fff" />
+    </LinearLayout>
 
     <include layout="@layout/progress_wheel"></include>
 </RelativeLayout>
