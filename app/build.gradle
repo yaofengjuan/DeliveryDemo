@@ -114,7 +114,7 @@ dependencies {
     //    }
     //广告
     //compile 'com.google.android.gms:play-services:6.+'
-    compile 'com.facebook.stetho:stetho:1.0.1'
+    //compile 'com.facebook.stetho:stetho:1.0.1'
     //chrome 调试
     compile files('libs/YoumiSdk_v6.4.4_2016-09-08.jar')
    // compile files('src/main/assets/dex.jar')

@@ -2,7 +2,6 @@ package com.ya.deliverydemo.delivery;
 
 import android.app.Application;
 
-import com.facebook.stetho.Stetho;
 import com.ya.deliverydemo.Constant;
 
 import net.youmi.android.AdManager;
@@ -10,13 +9,13 @@ import net.youmi.android.AdManager;
 public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
-        Stetho.initialize(
-                Stetho.newInitializerBuilder(this)
-                        .enableDumpapp(
-                                Stetho.defaultDumperPluginsProvider(this))
-                        .enableWebKitInspector(
-                                Stetho.defaultInspectorModulesProvider(this))
-                        .build());
+//        Stetho.initialize(
+//                Stetho.newInitializerBuilder(this)
+//                        .enableDumpapp(
+//                                Stetho.defaultDumperPluginsProvider(this))
+//                        .enableWebKitInspector(
+//                                Stetho.defaultInspectorModulesProvider(this))
+//                        .build());
         initYoumi();
     }
 
